@@ -2,9 +2,6 @@
 
 npm-debug.log*
 
-# Dist folder
-dist
-
 # Dependency directories
 node_modules
 
