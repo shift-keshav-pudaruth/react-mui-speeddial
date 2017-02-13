@@ -125,6 +125,8 @@ var SpeedDialItem = exports.SpeedDialItem = function (_React$PureComponent) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       var _props = this.props,
           index = _props.index,
           visible = _props.visible,
@@ -161,7 +163,9 @@ var SpeedDialItem = exports.SpeedDialItem = function (_React$PureComponent) {
             backgroundColor: this.props.backgroundColor,
             style: this.props.style,
             iconStyle: this.props.iconStyle,
-            onTouchTap: this.handleTouchTap
+            onTouchTap: function onTouchTap(ev) {
+              _this2.handleTouchTap(ev);
+            }
           },
           this.props.fabContent
         )
@@ -172,18 +176,6 @@ var SpeedDialItem = exports.SpeedDialItem = function (_React$PureComponent) {
 }(_react2.default.PureComponent);
 
 ;
-
-SpeedDialItem.propTypes = {
-  label: _react2.default.PropTypes.any,
-  labelStyle: _react2.default.PropTypes.object,
-  backgroundColor: _react2.default.PropTypes.string,
-  style: _react2.default.PropTypes.object,
-  iconStyle: _react2.default.PropTypes.object,
-  secondary: _react2.default.PropTypes.bool,
-  index: _react2.default.PropTypes.number,
-  visible: _react2.default.PropTypes.bool,
-  itemPosition: _react2.default.PropTypes.string
-};
 
 SpeedDialItem.defaultProps = {
   itemPosition: 'above', // above or below
