@@ -136,6 +136,7 @@ var SpeedDialItem = exports.SpeedDialItem = function (_React$PureComponent) {
       var style = {
         pointerEvents: visible ? "" : "none",
         position: "absolute",
+        zIndex: 9999,
         whiteSpace: "nowrap",
         right: 8,
         bottom: getYPos(index, itemPosition)
