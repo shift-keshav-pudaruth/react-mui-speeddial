@@ -57,7 +57,7 @@ export const SpeedDial = createReactClass({
       })
     );
 
-    return <div style={{...styles.container, ...style}}>
+    return <div className="speed-dial" style={{...styles.container, ...style}}>
 
       <FloatingActionButton
         {...this.props.fabProps}

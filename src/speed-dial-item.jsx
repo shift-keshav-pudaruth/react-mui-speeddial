@@ -77,8 +77,8 @@ export class SpeedDialItem extends React.PureComponent {
 
     style = { ...style, ...fx(visible, index) };
 
-    return (<div style={style}>
-      <div style={Object.assign(styles.itemContainer, this.props.labelStyle)}>
+    return (<div className="speed-dial-item" style={style}>
+      <div className="speed-dial-item-label" style={Object.assign(styles.itemContainer, this.props.labelStyle)}>
         {this.props.label}
       </div>
 
