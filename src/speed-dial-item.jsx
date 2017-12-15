@@ -75,7 +75,7 @@ export class SpeedDialItem extends React.PureComponent {
       position: "relative",
       zIndex: 9999,
       whiteSpace: "nowrap",
-      textAlign: 'right'
+      textAlign: 'right',
       margin: '10px 0px'
     };
 
