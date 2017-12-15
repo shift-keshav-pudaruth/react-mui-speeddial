@@ -1,21 +1,21 @@
 {
-  "name": "react-mui-speeddial-raphael-fork",
-  "version": "0.0.10",
+  "name": "react-mui-speeddial-shiftek",
+  "version": "0.0.11",
   "description": "a speed dial component for Material UI",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RaphaelHaettich/react-mui-speeddial.git"
+    "url": "git+https://github.com/shift-keshav-pudaruth/react-mui-speeddial.git"
   },
   "bugs": {
-    "url": "https://github.com/RaphaelHaettich/react-mui-speeddial/issues"
+    "url": "https://github.com/shift-keshav-pudaruth/react-mui-speeddial/issues"
   },
-  "homepage": "https://github.com/RaphaelHaettich/react-mui-speeddial#readme",
+  "homepage": "https://github.com/shift-keshav-pudaruth/react-mui-speeddial#readme",
   "main": "./dist/index.js",
   "dependencies": {
     "create-react-class": "^15.5.2"
   },
   "peerDependencies": {
-    "material-ui": "^0.19.3"
+    "material-ui": "^0.20.0"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
