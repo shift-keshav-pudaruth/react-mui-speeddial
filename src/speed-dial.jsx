@@ -22,10 +22,12 @@ export const SpeedDial = createReactClass({
   },
 
 
-  handleFabTouchTap() {
-    this.setState({
-      internalOpen: !this.state.internalOpen
-    });
+  handleFabTouchTap(mode) {
+    if(mode === 'click') {
+        this.setState({
+            internalOpen: !this.state.internalOpen
+        });
+    }
 
     let cb = this.props.onOpenCloseRequest;
     cb && cb();
@@ -33,12 +35,14 @@ export const SpeedDial = createReactClass({
 
 
   handleCloseRequest() {
-    this.handleFabTouchTap();
+      this.setState({
+        internalOpen: false
+      })
   },
 
   render: function() {
 
-    let { open, effect, style } = this.props;
+    let { open, effect, style, mode } = this.props;
 
     if (open === undefined)
       open = this.state.internalOpen;
@@ -59,9 +63,12 @@ export const SpeedDial = createReactClass({
 
     return <div className="speed-dial" style={{...styles.container, ...style}}>
 
+        {enhancedChildren}
+
       <FloatingActionButton
         {...this.props.fabProps}
-        onTouchTap={this.handleFabTouchTap}
+        { ... ((mode === undefined || mode === 'click') && { onClick: this.handleFabTouchTap('click')})}
+        { ... ((mode !== undefined) && { onHover: this.handleFabTouchTap(mode)})}
       >
         <FabSpinner
           aContent={this.props.fabContentOpen}
@@ -69,8 +76,6 @@ export const SpeedDial = createReactClass({
           showB={open}
         />
       </FloatingActionButton>
-
-      {enhancedChildren}
 
     </div>;
   }

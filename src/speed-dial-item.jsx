@@ -53,7 +53,7 @@ export class SpeedDialItem extends React.PureComponent {
     }),
   };
 
-  handleTouchTap(ev) {
+  handleClick(ev) {
     this.props.onCloseRequest();
     this.props.onTouchTap(ev);
   }
@@ -61,13 +61,22 @@ export class SpeedDialItem extends React.PureComponent {
   render() {
     const { index, visible, itemPosition } = this.props;
 
+    // let style = {
+    //   pointerEvents: visible ? "" : "none",
+    //   position: "absolute",
+    //   zIndex: 9999,
+    //   whiteSpace: "nowrap",
+    //   right: 8,
+    //   bottom: getYPos(index, itemPosition)
+    // };
+
     let style = {
       pointerEvents: visible ? "" : "none",
-      position: "absolute",
+      position: "relative",
       zIndex: 9999,
       whiteSpace: "nowrap",
-      right: 8,
-      bottom: getYPos(index, itemPosition)
+      textAlign: 'right'
+      margin: '10px 0px'
     };
 
     let fx = this.effects[this.props.effect];
@@ -77,24 +86,26 @@ export class SpeedDialItem extends React.PureComponent {
 
     style = { ...style, ...fx(visible, index) };
 
-    return (<div className="speed-dial-item" style={style}>
-      <div className="speed-dial-item-label" style={Object.assign(styles.itemContainer, this.props.labelStyle)}>
-        {this.props.label}
-      </div>
+    return (
+        <div className="speed-dial-item" style={style}>
+          <div className="speed-dial-item-label" style={Object.assign(styles.itemContainer, this.props.labelStyle)}>
+            {this.props.label}
+          </div>
 
-      <FloatingActionButton
-        mini={true}        
-        secondary={this.props.secondary}
-        backgroundColor={this.props.backgroundColor}
-        style={this.props.style}
-        iconStyle={this.props.iconStyle}
-        onTouchTap={(ev) => { this.handleTouchTap(ev); }}
-      >
-        {this.props.fabContent}
-      </FloatingActionButton>
-    </div>);
+          <FloatingActionButton
+            mini={true}
+            secondary={this.props.secondary}
+            backgroundColor={this.props.backgroundColor}
+            style={this.props.style}
+            iconStyle={this.props.iconStyle}
+            onClick={(ev) => { this.handleClick(ev); }}
+          >
+            {this.props.fabContent}
+          </FloatingActionButton>
+        </div>
+    );
   }
-};
+}
 
 SpeedDialItem.defaultProps = {
   itemPosition: 'above', // above or below
