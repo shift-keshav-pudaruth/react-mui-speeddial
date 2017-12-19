@@ -1,6 +1,6 @@
 {
   "name": "react-mui-speeddial-shiftek",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "a speed dial component for Material UI",
   "repository": {
     "type": "git",
@@ -11,9 +11,6 @@
   },
   "homepage": "https://github.com/shift-keshav-pudaruth/react-mui-speeddial#readme",
   "main": "./dist/index.js",
-  "dependencies": {
-    "create-react-class": "^15.5.2"
-  },
   "peerDependencies": {
     "material-ui": "^0.20.0"
   },

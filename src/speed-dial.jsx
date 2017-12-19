@@ -1,7 +1,6 @@
 import React from 'react'
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import { FabSpinner } from './fab-spinner';
-import createReactClass from 'create-react-class'
 
 const styles = {
 
@@ -13,34 +12,38 @@ const styles = {
 };
 
 
-export const SpeedDial = createReactClass({
+class SpeedDial extends React.Component{
 
-  getInitialState() {
-    return {
-      internalOpen: false
-    }
-  },
+    constructor(props) {
 
+        super(props);
+        this.state = {
+            internalOpen: false
+        };
 
-  handleFabTouchTap(mode) {
-    if(mode === 'click') {
-        this.setState({
-            internalOpen: !this.state.internalOpen
-        });
+        this.handleCloseRequest = this.handleCloseRequest.bind(this);
+        this.handleInteraction = this.handleInteraction.bind(this);
     }
 
-    let cb = this.props.onOpenCloseRequest;
-    cb && cb();
-  },
+    handleInteraction(mode) {
+        if(mode === 'click') {
+            this.setState({
+                internalOpen: !this.state.internalOpen
+            });
+        }
+
+        let cb = this.props.onOpenCloseRequest;
+        cb && cb();
+    }
 
 
   handleCloseRequest() {
       this.setState({
         internalOpen: false
       })
-  },
+  }
 
-  render: function() {
+  render() {
 
     let { open, effect, style, mode } = this.props;
 
@@ -61,14 +64,14 @@ export const SpeedDial = createReactClass({
       })
     );
 
-    return <div className="speed-dial" style={{...styles.container, ...style}}>
+    return (<div className="speed-dial" style={{...styles.container, ...style}}>
 
         {enhancedChildren}
 
       <FloatingActionButton
         {...this.props.fabProps}
-        { ... ((mode === undefined || mode === 'click') && { onClick: this.handleFabTouchTap('click')})}
-        { ... ((mode !== undefined) && { onHover: this.handleFabTouchTap(mode)})}
+        { ... ((mode === undefined || mode === 'click') && { onClick: this.handleInteraction('click')})}
+        { ... ((mode !== undefined) && { onHover: this.handleInteraction(mode)})}
       >
         <FabSpinner
           aContent={this.props.fabContentOpen}
@@ -77,11 +80,13 @@ export const SpeedDial = createReactClass({
         />
       </FloatingActionButton>
 
-    </div>;
+    </div>
+    );
   }
-
-});
+}
 
 SpeedDial.defaultProps = {
   itemsPosition: 'above' // above or below
 };
+
+export default SpeedDial;
